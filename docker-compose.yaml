@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  frontend:
+    container_name: frontend-week6
+    build: ./frontend
+    ports:
+      - 8080:80
+
+  mongodb:
+    container_name: mongodb-week6
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_DATABASE: persons
+    networks:
+      - backend-network
+
+  backend:
+    container_name: backend-week6
+    build: ./backend
+    depends_on:
+      - mongodb
+    ports:
+      - 3000:3000
+    environment:
+      DB_HOST: mongodb
+      DB_NAME: persons
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
