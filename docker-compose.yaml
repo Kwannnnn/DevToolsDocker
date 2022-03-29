@@ -1,21 +1,31 @@
 version: "3.9"
 services:
   frontend:
-    container_name: frontend-week6
+    container_name: frontend-week7
     build: ./frontend
     ports:
       - 8080:80
 
   mongodb:
-    container_name: mongodb-week6
+    container_name: mongodb-week7
     image: mongo:latest
     environment:
-      MONGO_INITDB_DATABASE: persons
+      MONGO_INITDB_DATABASE: devtools
     networks:
       - backend-network
 
+
+  mongo-seed:
+    container_name: mongo-seed-week7
+    build: ./mongo-seed
+    depends_on:
+      - mongodb
+    networks:
+      - backend-network
+
+
   backend:
-    container_name: backend-week6
+    container_name: backend-week7
     build: ./backend
     depends_on:
       - mongodb
@@ -23,9 +33,11 @@ services:
       - 3000:3000
     environment:
       DB_HOST: mongodb
-      DB_NAME: persons
+      DB_NAME: devtools
     networks:
       - backend-network
 
 networks:
   backend-network:
+    name: backend-network
+    driver: bridge

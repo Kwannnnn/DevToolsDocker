@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Donald Trump",
+        "street": "725 Fifth Avenue",
+        "city": "New York City",
+        "country": "USA"
+    },
+    {
+        "name": "Craig Bradley",
+        "street": "Handelskade",
+        "city": "Deventer",
+        "country": "Netherlands" 
+    },
+    {
+        "name": "Kristiyan Tenev",
+        "street": "Doornenburg",
+        "city": "Deventer",
+        "country": "Netherlands" 
+    },
+    {
+        "name": "Quan Nguyen",
+        "street": "Brink",
+        "city": "Deventer",
+        "country": "Netherlands" 
+    }
+]
