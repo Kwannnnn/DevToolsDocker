@@ -14,7 +14,6 @@ services:
     networks:
       - backend-network
 
-
   mongo-seed:
     container_name: mongo-seed-week7
     build: ./mongo-seed
@@ -22,7 +21,6 @@ services:
       - mongodb
     networks:
       - backend-network
-
 
   backend:
     container_name: backend-week7
