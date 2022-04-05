@@ -49,8 +49,15 @@ COPY persons.json ./persons.json
 CMD mongoimport --host mongodb --db devtools --collection person --type json --jsonArray --file /persons.json
 ```
 
-## 3. Deployed website Screenshot
+## 3. Comments
+After adjusting the `vue.config.js` to determine the path based on the `process.env.NODE_ENV` environment variable, this made it impossible for us to access the frontend application from localhost after running `docker compose up`.
+
+This is due to the fact that in our `Dockerfile` we run the command `npm run build` which sets the environment variable to production, thus the path is set to `~devtools-102` instead of `/`.
+
+To overcome this issue we slightly modified our Dockerfile to copy the dist folder to `/usr/share/nginx/html/~devtools-102`. This made it again possible to view the webpage from localhost.
+
+## 4. Deployed website Screenshot
 ![Deployed Website](/doc/remote-screenshot.png)
 
-## 4. GitLab CI/CD Pipeline Screenshot
+## 5. GitLab CI/CD Pipeline Screenshot
 ![CI/CD Pipeline Success](/doc/ci-cd-pipeline.png)
